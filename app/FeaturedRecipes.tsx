@@ -13,28 +13,73 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel";
 import Image from "next/image";
+import RecipeCard from "@/components/RecipeCard";
 
 type Recipe = {
   title: string;
-  image: string;
-  description: string;
+  imageURL: string;
+  cookingTime: string;
+  description?: string;
 };
 
 const recipes: Recipe[] = [
   {
+    imageURL: "/recipes/carbonara.jpg",
     title: "Spaghetti Carbonara",
-    image: "/recipes/carbonara.jpg",
+    cookingTime: "20 mins",
     description:
       "A classic Roman pasta with eggs, cheese, pancetta, and pepper.",
   },
   {
+    imageURL: "/recipes/green-curry.jpg",
     title: "Thai Green Curry",
-    image: "/recipes/green-curry.jpg",
+    cookingTime: "30 mins",
     description: "Creamy, spicy curry made with fresh herbs and coconut milk.",
   },
   {
+    imageURL: "/recipes/avocado-toast.jpg",
     title: "Avocado Toast",
-    image: "/recipes/avocado-toast.jpg",
+    cookingTime: "10 mins",
+    description:
+      "Sourdough toast topped with smashed avocado and chili flakes.",
+  },
+  ,
+  {
+    imageURL: "/recipes/green-curry.jpg",
+    title: "Thai Green Curry",
+    cookingTime: "30 mins",
+    description: "Creamy, spicy curry made with fresh herbs and coconut milk.",
+  },
+  {
+    imageURL: "/recipes/avocado-toast.jpg",
+    title: "Avocado Toast",
+    cookingTime: "10 mins",
+    description:
+      "Sourdough toast topped with smashed avocado and chili flakes.",
+  },
+  {
+    imageURL: "/recipes/green-curry.jpg",
+    title: "Thai Green Curry",
+    cookingTime: "30 mins",
+    description: "Creamy, spicy curry made with fresh herbs and coconut milk.",
+  },
+  {
+    imageURL: "/recipes/avocado-toast.jpg",
+    title: "Avocado Toast",
+    cookingTime: "10 mins",
+    description:
+      "Sourdough toast topped with smashed avocado and chili flakes.",
+  },
+  {
+    imageURL: "/recipes/green-curry.jpg",
+    title: "Thai Green Curry",
+    cookingTime: "30 mins",
+    description: "Creamy, spicy curry made with fresh herbs and coconut milk.",
+  },
+  {
+    imageURL: "/recipes/avocado-toast.jpg",
+    title: "Avocado Toast",
+    cookingTime: "10 mins",
     description:
       "Sourdough toast topped with smashed avocado and chili flakes.",
   },
@@ -43,19 +88,19 @@ const recipes: Recipe[] = [
 export default function FeaturedRecipes() {
   return (
     <div className="flex items-center justify-center">
-      <Carousel className="w-full max-w-fit">
+      <Carousel className="w-full max-w-5xl">
         <CarouselContent className="-ml-1">
-          {Array.from({ length: 10 }).map((_, index) => (
+          {recipes.map((recipe, index) => (
             <CarouselItem
               key={index}
               className="pl-1 md:basis-1/3 lg:basis-1/4"
             >
-              <div className="p-1">
-                <Card>
-                  <CardContent className="flex aspect-square items-center justify-center p-6">
-                    <span className="text-2xl font-semibold">{index + 1}</span>
-                  </CardContent>
-                </Card>
+              <div className="p-2">
+                <RecipeCard
+                  imageUrl={recipe.imageURL}
+                  title={recipe.title}
+                  cookingTime={recipe.cookingTime}
+                />
               </div>
             </CarouselItem>
           ))}
